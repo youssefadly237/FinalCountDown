@@ -67,7 +67,6 @@
             margin-top: 20px;
             color: #d0a9f5;
             font-size: 1em;
-            text-align: center;
         }
     </style>
 </head>
@@ -98,7 +97,7 @@
             <div id="event5" class="countdown"></div>
         </div>
         <div class="event">
-            <div class="event-title">Geology TOC Exam</div>
+            <div class="event-title">Mechanics TOC Exam</div>
             <div id="event6" class="countdown"></div>
         </div>
         <div class="event">
@@ -118,41 +117,36 @@
             <div id="event10" class="countdown"></div>
         </div>
         <div class="event">
-            <div class="event-title">Biology TOC Exam</div>
+            <div class="event-title">Math TOC Exam</div>
             <div id="event11" class="countdown"></div>
         </div>
         <div class="event">
-            <div class="event-title">Biology & Geology URT Exam</div>
+            <div class="event-title">Math & Mechanics URT Exam</div>
             <div id="event12" class="countdown"></div>
         </div>
     </div>
 
     <footer>
         Made by <a href="https://linktr.ee/youssefadly237" target="_blank">Youssef Adly</a>
-        <br>
-        <a href="math.html" target="_blank">Math Section</a>
     </footer>
     
     <script>
         function countdown(elementId, eventDate) {
             const countDownDate = new Date(eventDate).getTime();
             const countdownElement = document.getElementById(elementId);
-
+    
             const updateCountdown = setInterval(function() {
                 const now = new Date().getTime();
                 const distance = countDownDate - now;
-
+    
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const totalHours = days * 24 + hours;
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
+    
                 if (distance >= 0) {
-                    if (days > 0) {
-                        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m`;
-                    } else {
-                        countdownElement.innerHTML = `${hours}h ${minutes}m`;
-                    }
+                    countdownElement.innerHTML = `${String(totalHours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
                 } else {
                     clearInterval(updateCountdown);
                     countdownElement.innerHTML = "Done!";
