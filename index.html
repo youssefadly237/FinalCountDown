@@ -146,9 +146,9 @@
 
                 if (distance >= 0) {
                     if (days > 0) {
-                        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m`;
                     } else {
-                        countdownElement.innerHTML = `${hours}h ${minutes}m ${seconds}s`;
+                        countdownElement.innerHTML = `${hours}h ${minutes}m`;
                     }
                 } else {
                     clearInterval(updateCountdown);
