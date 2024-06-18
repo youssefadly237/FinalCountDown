@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Countdown</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Baloo 2', cursive;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h1, h2 {
+            color: #d0a9f5;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            margin: 10px 0;
+        }
+        .event {
+            background: #333;
+            border: 2px solid #7d3c98;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(125, 60, 152, 0.5);
+        }
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .event-title {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #d0a9f5;
+        }
+        #mainEvent {
+            width: 100%;
+            max-width: 1140px;
+            background: #333;
+            border: 2px solid #7d3c98;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(125, 60, 152, 0.5);
+            box-sizing: border-box;
+        }
+        footer {
+            margin-top: 20px;
+            color: #d0a9f5;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Final End Countdown</h1>
+    <div id="mainEvent" class="event countdown"></div>
+
+    <h2>Other Events</h2>
+    <div class="event-grid">
+        <div class="event">
+            <div class="event-title">Arabic URT Exam</div>
+            <div id="event1" class="countdown"></div>
+        </div>
+        <div class="event">
+            <div class="event-title">Arabic TOC Exam</div>
+            <div id="event2" class="countdown"></div>
+        </div>
+        <div class="event">
+            <div class="event-title">English URT Exam</div>
+            <div id="event3" class="countdown"></div>
+        </div>
+        <div class="event">
+            <div class="event-title">Chemistry TOC Exam</div>
+            <div id="event4" class="countdown"></div>
+        </div>
+        <div class="event">
+            <div class="event-title">Physics TOC Exam</div>
+            <div id="event5" class="countdown"></div>
+        </div>
+        <div class="event">
+            <div class="event-title">Geology TOC Exam</div>
+            <div id="event6" class="countdown"></div>
+        </div>
+        <div class="event">
+            <div class="event-title">English TOC Exam</div>
+            <div id="event7" class="countdown"></div>
+        </div>
+        <div class="event">
+            <div class="event-title">German URT Exam</div>
+            <div id="event8" class="countdown"></div>
+        </div>
+        <div class="event">
+            <div class="event-title">German TOC Exam</div>
+            <div id="event9" class="countdown"></div>
+        </div>
+        <div class="event">
+            <div class="event-title">Chemistry & Physics URT Exam</div>
+            <div id="event10" class="countdown"></div>
+        </div>
+        <div class="event">
+            <div class="event-title">Biology TOC Exam</div>
+            <div id="event11" class="countdown"></div>
+        </div>
+        <div class="event">
+            <div class="event-title">Biology & Geology URT Exam</div>
+            <div id="event12" class="countdown"></div>
+        </div>
+    </div>
+
+    <footer>
+        Made by <a href="https://linktr.ee/youssefadly237" target="_blank">Youssef Adly</a>
+    </footer>
+    
+    <script>
+        function countdown(elementId, eventDate) {
+            const countDownDate = new Date(eventDate).getTime();
+            const countdownElement = document.getElementById(elementId);
+
+            const updateCountdown = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countDownDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                if (distance >= 0) {
+                    if (days > 0) {
+                        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                    } else {
+                        countdownElement.innerHTML = `${hours}h ${minutes}m ${seconds}s`;
+                    }
+                } else {
+                    clearInterval(updateCountdown);
+                    countdownElement.innerHTML = "Done!";
+                }
+            }, 1000);
+        }
+
+        countdown("mainEvent", "2024-07-20T10:30:00");
+        countdown("event1", "2024-06-22T11:00:00");
+        countdown("event2", "2024-06-22T12:30:00");
+        countdown("event3", "2024-06-26T10:30:00");
+        countdown("event4", "2024-06-29T11:00:00");
+        countdown("event5", "2024-07-03T11:00:00");
+        countdown("event6", "2024-07-06T11:00:00");
+        countdown("event7", "2024-07-10T23:00:00");
+        countdown("event8", "2024-07-13T11:00:00");
+        countdown("event9", "2024-07-13T12:30:00");
+        countdown("event10", "2024-07-15T10:30:00");
+        countdown("event11", "2024-07-17T11:00:00");
+        countdown("event12", "2024-07-20T10:30:00");
+    </script>
+</body>
+</html>
+
